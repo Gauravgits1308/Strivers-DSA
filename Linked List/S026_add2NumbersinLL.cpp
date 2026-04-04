@@ -93,3 +93,114 @@ int main(){
     cout << endl;
 
 }
+
+/*
+👉 Add two numbers stored in linked lists (digit by digit)
+
+Example:
+2 → 4   (represents 42)
+6 → 8 → 1   (represents 186)
+
+Result: 8 → 2 → 2   (represents 228)
+
+⚙️ Core Idea (Very Important)
+👉 Just like normal addition on paper
+
+  42
++186
+----
+ 228
+
+We:
+Add digits
+Keep carry
+Move forward
+
+🔁 Algorithm (Step-by-Step)
+1. Initialize pointers
+temp1 = head1
+temp2 = head2
+carry = 0
+
+2. Create dummy node
+dummy → helps avoid edge cases
+curr → used to build answer
+
+3. Loop until everything is processed
+while(temp1 OR temp2 OR carry)
+
+👉 Why carry?
+Because last addition may create extra digit (like 9+1=10)
+
+4. Calculate sum
+sum = carry
+
+if(temp1 exists) → add temp1->data
+if(temp2 exists) → add temp2->data
+
+5. Create new node
+digit = sum % 10
+carry = sum / 10
+
+👉 Example:
+
+sum = 12 → digit = 2, carry = 1
+
+6. Attach node to result
+curr->next = new Node(digit)
+curr = curr->next
+
+7. Move pointers
+if(temp1) temp1 = temp1->next
+if(temp2) temp2 = temp2->next
+
+8. Return result
+return dummy->next
+
+🔄 Dry Run (Quick Revision)
+temp1: 2 → 4
+temp2: 6 → 8 → 1
+Step	Sum	Digit	Carry
+2+6	8	8	0
+4+8	12	2	1
+0+1+carry	2	2	0
+
+Result:
+8 → 2 → 2
+
+📌 Why we use dummyNode
+🔹 1. Avoid handling first node separately
+Without dummy → need special if(head == NULL)
+With dummy → same logic for all nodes
+
+🔹 2. Simplifies code
+No extra conditions
+Clean and uniform loop
+
+🔹 3. Prevents bugs
+No risk of:
+uninitialized head
+null pointer errors in first insertion
+
+🔹 4. Easy insertion
+curr->next = new Node(value);
+curr = curr->next;
+
+👉 Works for every node (including first)
+
+🔹 5. Always have a starting pointer
+dummyNode acts as a fixed starting point
+We never lose reference to head
+
+🔹 6. Final result is easy
+return dummyNode->next;
+
+👉 Skip dummy, return actual list
+
+🔹 7. Improves readability (Interview important)
+Code looks clean and professional
+Easy to understand and debug
+🧾 One-Line Revision
+
+👉 Dummy node removes special handling of head and makes insertion uniform.
+*/
