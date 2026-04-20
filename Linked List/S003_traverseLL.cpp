@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
 // Created Node Data Type
@@ -43,7 +44,6 @@ int main(){
     vec.push_back(10);
 
     Node* head = convertArrayToLL(vec);
-    cout << head->data << endl ;
 
     // Traversing a Linked List
     traverseLL(head);
